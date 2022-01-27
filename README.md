@@ -1,2 +1,3 @@
-# cat-breed-chooser-backend
-The backend for the car breed chooser app
+# Cat Breed Chooser Backend
+
+The backend for the cat breed chooser app
