@@ -1,7 +1,5 @@
 package com.catbreedchooser.catbreedchooserbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -55,5 +53,9 @@ public class Breed {
 
     @Column
     private Integer vocalization;
-    
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "description_id", referencedColumnName = "id")
+    private Description description;
+
 }
