@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface BreedRepository extends JpaRepository<Breed,Long> {
     boolean existsByName(String name);
-    List<Breed> findAllByNameNotNull();//returns all breeds
+    List<Breed> findByNameNotNull();//returns all breeds
 }

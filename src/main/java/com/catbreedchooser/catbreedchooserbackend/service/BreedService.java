@@ -43,7 +43,7 @@ public class BreedService {
     //get all breeds
     public List<Breed> getBreeds() {
         LOGGER.info("calling getBreeds from service");
-        List<Breed> breeds = breedRepository.findAllByNameNotNull();
+        List<Breed> breeds = breedRepository.findByNameNotNull();
         if (breeds.isEmpty()) {
             throw new InformationMissingException("there are no breeds in the database");
         } else {
