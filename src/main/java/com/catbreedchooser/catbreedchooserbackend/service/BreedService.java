@@ -1,8 +1,10 @@
 package com.catbreedchooser.catbreedchooserbackend.service;
 
+import com.catbreedchooser.catbreedchooserbackend.exception.InformationExistsException;
 import com.catbreedchooser.catbreedchooserbackend.exception.InformationMissingException;
 import com.catbreedchooser.catbreedchooserbackend.model.Breed;
 import com.catbreedchooser.catbreedchooserbackend.repository.BreedRepository;
+import com.catbreedchooser.catbreedchooserbackend.thecatapi.CatBreedToAdd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +20,13 @@ public class BreedService {
     public void setBreedRepository(BreedRepository breedRepository) {this.breedRepository = breedRepository;}
 
     //add breed to database
-    public Breed createBreed(String name){
-        Breed breed = breedRepository.findBreedByNameIgnoreCase(name);
-        if (breed != null) {return breed;}
-        else {
-            Breed breedObject = new Breed();
-            //add api object to breed//
-            return breedRepository.save(breedObject);
+    public void createBreed(CatBreedToAdd catBreed){
+        Breed newBreed = new Breed(catBreed);
+        if (!breedRepository.existsByName(newBreed.getBreed_id())) {
+            //save data
+            breedRepository.save(newBreed);
+        } else {
+            throw new InformationExistsException("the breed "+newBreed.getName()+" is already in the database");
         }
     }
 

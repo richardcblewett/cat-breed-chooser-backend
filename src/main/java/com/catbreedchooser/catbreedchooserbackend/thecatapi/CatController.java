@@ -4,6 +4,7 @@ package com.catbreedchooser.catbreedchooserbackend.thecatapi;
 import com.catbreedchooser.catbreedchooserbackend.exception.InformationExistsException;
 import com.catbreedchooser.catbreedchooserbackend.exception.InformationMissingException;
 import com.catbreedchooser.catbreedchooserbackend.model.Breed;
+import net.minidev.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +34,8 @@ public class CatController {
 
     private CatApiBreedsResult breedsResult;
 
-    @GetMapping(path = "breeds")
-    public CatApiBreedsResult getCatApiBreeds() {
+    @GetMapping(path = "/breeds")
+    public JSONArray getCatApiBreeds() {
         LOGGER.info("calling getCatApiBreeds from controller");
         return catservice.getCatApiBreeds();
     }
