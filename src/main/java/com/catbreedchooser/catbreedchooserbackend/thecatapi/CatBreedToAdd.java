@@ -151,14 +151,6 @@ public class CatBreedToAdd {
         this.vocalisation = vocalisation;
     }
 
-    public Integer getDescription_id() {
-        return description_id;
-    }
-
-    public void setDescription_id(Integer description_id) {
-        this.description_id = description_id;
-    }
-
     public String getDescription() {
         return description;
     }

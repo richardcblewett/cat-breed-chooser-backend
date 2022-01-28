@@ -22,6 +22,9 @@ public class Breed {
     @Column
     private String reference_image_id; //used to store an id for the main image rather than the entire url
 
+    @Column(columnDefinition = "text") //not sure how long a breed description is.
+    private String description;
+
     // number fields
     @Column
     private Integer adaptability;
@@ -56,10 +59,6 @@ public class Breed {
     @Column
     private Integer vocalisation;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "description_id", referencedColumnName = "id")
-    private Description description;
-
     public Breed() {
     }
 
@@ -78,9 +77,10 @@ public class Breed {
         this.shedding_level = catBreedToAdd.getShedding_level();
         this.social_needs = catBreedToAdd.getSocial_needs();
         this.vocalisation = catBreedToAdd.getVocalisation();
+        this.description = catBreedToAdd.getDescription();
     }
 
-    public Breed(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization) {
+    public Breed(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization, String description) {
         this.id = breed_id;
         this.name = name;
         this.reference_image_id = reference_image_id;
@@ -95,6 +95,7 @@ public class Breed {
         this.shedding_level = shedding_level;
         this.social_needs = social_needs;
         this.vocalisation = vocalization;
+        this.description = description;
     }
 
     public Long getIdTable() {
@@ -217,11 +218,11 @@ public class Breed {
         this.vocalisation = vocalization;
     }
 
-    public Description getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Description description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
