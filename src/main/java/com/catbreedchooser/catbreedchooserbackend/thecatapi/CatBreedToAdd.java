@@ -1,86 +1,28 @@
-package com.catbreedchooser.catbreedchooserbackend.model;
+package com.catbreedchooser.catbreedchooserbackend.thecatapi;
 
-import com.catbreedchooser.catbreedchooserbackend.thecatapi.CatBreedToAdd;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name="breed")
-public class Breed {
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTable;
-
-    //string values
-    @Column
-    private String id; //specific to thecatapi for internal linking
-
-    @Column
+public class CatBreedToAdd {
+    private String id;
     private String name;
-
-    @Column
-    private String reference_image_id; //used to store an id for the main image rather than the entire url
-
-    // number fields
-    @Column
+    private String reference_image_id;
     private Integer adaptability;
-
-    @Column
     private Integer affection_level;
-
-    @Column
     private Integer child_friendly;
-
-    @Column
     private Integer dog_friendly;
-
-    @Column
     private Integer energy_level;
-
-    @Column
     private Integer hypoallergenic;
-
-    @Column
     private Integer intelligence;
-
-    @Column
     private Integer lap;
-
-    @Column
     private Integer shedding_level;
-
-    @Column
     private Integer social_needs;
-
-    @Column
     private Integer vocalisation;
+    private Integer description_id;
+    private String description;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "description_id", referencedColumnName = "id")
-    private Description description;
 
-    public Breed() {
+    public CatBreedToAdd() {
     }
 
-    public Breed(CatBreedToAdd catBreedToAdd){
-        this.id = catBreedToAdd.getId();
-        this.name = catBreedToAdd.getName();
-        this.reference_image_id = catBreedToAdd.getReference_image_id();
-        this.adaptability = catBreedToAdd.getAdaptability();
-        this.affection_level = catBreedToAdd.getAffection_level();
-        this.child_friendly = catBreedToAdd.getChild_friendly();
-        this.dog_friendly = catBreedToAdd.getDog_friendly();
-        this.energy_level = catBreedToAdd.getEnergy_level();
-        this.hypoallergenic = catBreedToAdd.getHypoallergenic();
-        this.intelligence = catBreedToAdd.getIntelligence();
-        this.lap = catBreedToAdd.getLap();
-        this.shedding_level = catBreedToAdd.getShedding_level();
-        this.social_needs = catBreedToAdd.getSocial_needs();
-        this.vocalisation = catBreedToAdd.getVocalisation();
-    }
-
-    public Breed(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization) {
+    public CatBreedToAdd(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization) {
         this.id = breed_id;
         this.name = name;
         this.reference_image_id = reference_image_id;
@@ -97,20 +39,12 @@ public class Breed {
         this.vocalisation = vocalization;
     }
 
-    public Long getIdTable() {
-        return idTable;
-    }
-
-    public void setIdTable(Long id) {
-        this.idTable = id;
-    }
-
     public String getId() {
         return id;
     }
 
-    public void setId(String breed_id) {
-        this.id = breed_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -213,15 +147,23 @@ public class Breed {
         return vocalisation;
     }
 
-    public void setVocalisation(Integer vocalization) {
-        this.vocalisation = vocalization;
+    public void setVocalisation(Integer vocalisation) {
+        this.vocalisation = vocalisation;
     }
 
-    public Description getDescription() {
+    public Integer getDescription_id() {
+        return description_id;
+    }
+
+    public void setDescription_id(Integer description_id) {
+        this.description_id = description_id;
+    }
+
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Description description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
