@@ -1,7 +1,7 @@
 package com.catbreedchooser.catbreedchooserbackend.thecatapi;
 
 public class CatBreedToAdd {
-    private String breed_id;
+    private String id;
     private String name;
     private String reference_image_id;
     private Integer adaptability;
@@ -14,15 +14,16 @@ public class CatBreedToAdd {
     private Integer lap;
     private Integer shedding_level;
     private Integer social_needs;
-    private Integer vocalization;
+    private Integer vocalisation;
     private Integer description_id;
+    private String description;
 
 
     public CatBreedToAdd() {
     }
 
     public CatBreedToAdd(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization) {
-        this.breed_id = breed_id;
+        this.id = breed_id;
         this.name = name;
         this.reference_image_id = reference_image_id;
         this.adaptability = adaptability;
@@ -35,15 +36,15 @@ public class CatBreedToAdd {
         this.lap = lap;
         this.shedding_level = shedding_level;
         this.social_needs = social_needs;
-        this.vocalization = vocalization;
+        this.vocalisation = vocalization;
     }
 
-    public String getBreed_id() {
-        return breed_id;
+    public String getId() {
+        return id;
     }
 
-    public void setBreed_id(String breed_id) {
-        this.breed_id = breed_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -142,12 +143,12 @@ public class CatBreedToAdd {
         this.social_needs = social_needs;
     }
 
-    public Integer getVocalization() {
-        return vocalization;
+    public Integer getVocalisation() {
+        return vocalisation;
     }
 
-    public void setVocalization(Integer vocalization) {
-        this.vocalization = vocalization;
+    public void setVocalisation(Integer vocalisation) {
+        this.vocalisation = vocalisation;
     }
 
     public Integer getDescription_id() {
@@ -156,5 +157,13 @@ public class CatBreedToAdd {
 
     public void setDescription_id(Integer description_id) {
         this.description_id = description_id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

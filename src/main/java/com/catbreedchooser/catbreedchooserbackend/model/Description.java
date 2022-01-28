@@ -18,4 +18,11 @@ public class Description {
     @JsonIgnore
     @OneToOne(mappedBy = "description")
     private Breed breed;
+
+    public Description() {
+    }
+
+    public Description(String description) {
+        this.description = description;
+    }
 }

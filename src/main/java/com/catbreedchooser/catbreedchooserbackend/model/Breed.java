@@ -10,11 +10,11 @@ public class Breed {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idTable;
 
     //string values
     @Column
-    private String breed_id; //specific to thecatapi for internal linking
+    private String id; //specific to thecatapi for internal linking
 
     @Column
     private String name;
@@ -54,7 +54,7 @@ public class Breed {
     private Integer social_needs;
 
     @Column
-    private Integer vocalization;
+    private Integer vocalisation;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "description_id", referencedColumnName = "id")
@@ -64,7 +64,7 @@ public class Breed {
     }
 
     public Breed(CatBreedToAdd catBreedToAdd){
-        this.breed_id = catBreedToAdd.getBreed_id();
+        this.id = catBreedToAdd.getId();
         this.name = catBreedToAdd.getName();
         this.reference_image_id = catBreedToAdd.getReference_image_id();
         this.adaptability = catBreedToAdd.getAdaptability();
@@ -77,11 +77,11 @@ public class Breed {
         this.lap = catBreedToAdd.getLap();
         this.shedding_level = catBreedToAdd.getShedding_level();
         this.social_needs = catBreedToAdd.getSocial_needs();
-        this.vocalization = catBreedToAdd.getVocalization();
+        this.vocalisation = catBreedToAdd.getVocalisation();
     }
 
     public Breed(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization) {
-        this.breed_id = breed_id;
+        this.id = breed_id;
         this.name = name;
         this.reference_image_id = reference_image_id;
         this.adaptability = adaptability;
@@ -94,23 +94,23 @@ public class Breed {
         this.lap = lap;
         this.shedding_level = shedding_level;
         this.social_needs = social_needs;
-        this.vocalization = vocalization;
+        this.vocalisation = vocalization;
     }
 
-    public Long getId() {
+    public Long getIdTable() {
+        return idTable;
+    }
+
+    public void setIdTable(Long id) {
+        this.idTable = id;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getBreed_id() {
-        return breed_id;
-    }
-
-    public void setBreed_id(String breed_id) {
-        this.breed_id = breed_id;
+    public void setId(String breed_id) {
+        this.id = breed_id;
     }
 
     public String getName() {
@@ -209,12 +209,12 @@ public class Breed {
         this.social_needs = social_needs;
     }
 
-    public Integer getVocalization() {
-        return vocalization;
+    public Integer getVocalisation() {
+        return vocalisation;
     }
 
-    public void setVocalization(Integer vocalization) {
-        this.vocalization = vocalization;
+    public void setVocalisation(Integer vocalization) {
+        this.vocalisation = vocalization;
     }
 
     public Description getDescription() {
