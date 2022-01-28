@@ -3,34 +3,40 @@ package com.catbreedchooser.catbreedchooserbackend.thecatapi;
 
 import com.catbreedchooser.catbreedchooserbackend.exception.InformationExistsException;
 import com.catbreedchooser.catbreedchooserbackend.exception.InformationMissingException;
+import com.catbreedchooser.catbreedchooserbackend.model.Breed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.naming.directory.SearchResult;
+import java.util.List;
+import java.util.logging.Logger;
+
 @RestController
 @RequestMapping("/")
 public class CatController {
 
-    private SearchResult searchResult;
+    private static final Logger LOGGER = Logger.getLogger(CatController.class.getName());
+    private CatService catservice;
+
 
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    public void setCatService(CatService catservice){this.catservice = catservice;}
+
     private String key = "f4fb05db-2de9-4da7-9987-6b58b7d5b6d8";
     private static String url = "https://api.thecatapi.com/v1/breeds";
 
+    private CatApiBreedsResult breedsResult;
+
     @GetMapping(path = "breeds")
-    public void getBreeds() {
-        SearchResult searchResult = restTemplate.getForObject(url + "?api_key=" + key,  SearchResult.class);
-        if (searchResult == null) {
-            throw new InformationMissingException("getBreeds request returned a null value");
-        } else if ( 1 == 2 ) {
-            throw new InformationMissingException("unable to locate cat breeds from api");
-        } else {
-            throw new InformationExistsException("ha!") ;   //return new CatApiBreed();
-        }
+    public CatApiBreedsResult getCatApiBreeds() {
+        LOGGER.info("calling getCatApiBreeds from controller");
+        return catservice.getCatApiBreeds();
     }
 
     @GetMapping(path = "json")

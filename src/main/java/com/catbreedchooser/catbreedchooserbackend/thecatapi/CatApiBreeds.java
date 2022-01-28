@@ -1,5 +1,5 @@
 package com.catbreedchooser.catbreedchooserbackend.thecatapi;
 
-public class CatApiBreed {
+public class CatApiBreeds extends CatBreedToAdd{
 
 }

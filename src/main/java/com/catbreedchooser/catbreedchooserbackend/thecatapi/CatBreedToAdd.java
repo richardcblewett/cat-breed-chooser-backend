@@ -1,86 +1,27 @@
-package com.catbreedchooser.catbreedchooserbackend.model;
+package com.catbreedchooser.catbreedchooserbackend.thecatapi;
 
-import com.catbreedchooser.catbreedchooserbackend.thecatapi.CatBreedToAdd;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name="breed")
-public class Breed {
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    //string values
-    @Column
-    private String breed_id; //specific to thecatapi for internal linking
-
-    @Column
+public class CatBreedToAdd {
+    private String breed_id;
     private String name;
-
-    @Column
-    private String reference_image_id; //used to store an id for the main image rather than the entire url
-
-    // number fields
-    @Column
+    private String reference_image_id;
     private Integer adaptability;
-
-    @Column
     private Integer affection_level;
-
-    @Column
     private Integer child_friendly;
-
-    @Column
     private Integer dog_friendly;
-
-    @Column
     private Integer energy_level;
-
-    @Column
     private Integer hypoallergenic;
-
-    @Column
     private Integer intelligence;
-
-    @Column
     private Integer lap;
-
-    @Column
     private Integer shedding_level;
-
-    @Column
     private Integer social_needs;
-
-    @Column
     private Integer vocalization;
+    private Integer description_id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "description_id", referencedColumnName = "id")
-    private Description description;
 
-    public Breed() {
+    public CatBreedToAdd() {
     }
 
-    public Breed(CatBreedToAdd catBreedToAdd){
-        this.breed_id = catBreedToAdd.getBreed_id();
-        this.name = catBreedToAdd.getName();
-        this.reference_image_id = catBreedToAdd.getReference_image_id();
-        this.adaptability = catBreedToAdd.getAdaptability();
-        this.affection_level = catBreedToAdd.getAffection_level();
-        this.child_friendly = catBreedToAdd.getChild_friendly();
-        this.dog_friendly = catBreedToAdd.getDog_friendly();
-        this.energy_level = catBreedToAdd.getEnergy_level();
-        this.hypoallergenic = catBreedToAdd.getHypoallergenic();
-        this.intelligence = catBreedToAdd.getIntelligence();
-        this.lap = catBreedToAdd.getLap();
-        this.shedding_level = catBreedToAdd.getShedding_level();
-        this.social_needs = catBreedToAdd.getSocial_needs();
-        this.vocalization = catBreedToAdd.getVocalization();
-    }
-
-    public Breed(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization) {
+    public CatBreedToAdd(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization) {
         this.breed_id = breed_id;
         this.name = name;
         this.reference_image_id = reference_image_id;
@@ -95,14 +36,6 @@ public class Breed {
         this.shedding_level = shedding_level;
         this.social_needs = social_needs;
         this.vocalization = vocalization;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getBreed_id() {
@@ -217,11 +150,11 @@ public class Breed {
         this.vocalization = vocalization;
     }
 
-    public Description getDescription() {
-        return description;
+    public Integer getDescription_id() {
+        return description_id;
     }
 
-    public void setDescription(Description description) {
-        this.description = description;
+    public void setDescription_id(Integer description_id) {
+        this.description_id = description_id;
     }
 }
