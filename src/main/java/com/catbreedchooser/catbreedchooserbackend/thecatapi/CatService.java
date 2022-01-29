@@ -1,12 +1,8 @@
 //implements the api
 package com.catbreedchooser.catbreedchooserbackend.thecatapi;
 
-import com.catbreedchooser.catbreedchooserbackend.exception.InformationExistsException;
 import com.catbreedchooser.catbreedchooserbackend.exception.InformationMissingException;
-import com.catbreedchooser.catbreedchooserbackend.model.Breed;
-import com.catbreedchooser.catbreedchooserbackend.repository.BreedRepository;
 import com.catbreedchooser.catbreedchooserbackend.service.BreedService;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.minidev.json.JSONArray;
@@ -14,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.logging.Logger;
 
 @Service
