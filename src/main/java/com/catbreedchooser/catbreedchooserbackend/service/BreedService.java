@@ -51,7 +51,7 @@ public class BreedService {
         breeds.forEach( (element) -> {
             String refId = element.getReference_image_id();
             if (refId != null) {
-                pictures.add(refId);
+                pictures.add("https://cdn2.thecatapi.com/images/"+refId+".jpg");
             }
         });
         return pictures;
