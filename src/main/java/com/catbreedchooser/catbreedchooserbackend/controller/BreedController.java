@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -18,13 +19,21 @@ public class BreedController {
     private static final Logger LOGGER = Logger.getLogger(BreedController.class.getName());
 
     @Autowired
-    public void setBreedService(BreedService breedService){this.breedService= breedService;}
+    public void setBreedService(BreedService breedService){this.breedService = breedService;}
 
+    //returns everything
     //http:localhost:9092/api/breeds
     @GetMapping("/breeds")
     public List<Breed> getBreeds() {
         LOGGER.info("calling getBreeds from controller");
         return breedService.getBreeds();
+    }
+    //returns only the photo reference string
+    //http:localhost:9092/api/pictures
+    @GetMapping("/pictures")
+    public List<String> getPictures() {
+        LOGGER.info("calling getPictures from controller");
+        return breedService.getPictures();
     }
 
 }

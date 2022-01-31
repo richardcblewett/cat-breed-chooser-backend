@@ -5,8 +5,10 @@ import com.catbreedchooser.catbreedchooserbackend.model.Breed;
 import com.catbreedchooser.catbreedchooserbackend.repository.BreedRepository;
 import com.catbreedchooser.catbreedchooserbackend.thecatapi.CatBreedToAdd;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -39,5 +41,19 @@ public class BreedService {
         } else {
             return breeds;
         }
+    }
+
+    //get list of pictures
+    public List<String> getPictures() {
+        LOGGER.info("calling getPictures from service");
+        List<String> pictures = new ArrayList<>();
+        List<Breed> breeds = breedRepository.findByNameNotNull();
+        breeds.forEach( (element) -> {
+            String refId = element.getReference_image_id();
+            if (refId != null) {
+                pictures.add("https://cdn2.thecatapi.com/images/"+refId+".jpg");
+            }
+        });
+        return pictures;
     }
 }
