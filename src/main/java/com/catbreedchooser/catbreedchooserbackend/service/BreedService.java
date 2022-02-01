@@ -27,7 +27,6 @@ public class BreedService {
         if (!breedRepository.existsByName(newBreed.getName())) {
             breedRepository.save(newBreed);
         } else {
-            //this else should never happen because the code should only be run once to seed the database.
             LOGGER.info("the breed "+newBreed.getName()+" is already in the database");
         }
     }
@@ -57,7 +56,29 @@ public class BreedService {
         return pictures;
     }
 
+    //get list of breed names
+    public List<String> getBreedNames() {
+        LOGGER.info("calling getBreedNames from service");
+        List<String> names = new ArrayList<>();
+        List<Breed> breeds = breedRepository.findByNameNotNull();
+        breeds.forEach( (element) -> {
+            String name = element.getName();
+            if (name != null) {
+                names.add(name);
+            }
+        });
+        return names;
+    }
+
+    //get a single breed by name
+    public Breed getBreedByName(String name){
+        LOGGER.info("calling getBreedByName from service");
+        return breedRepository.findByName(name);
+    }
+
+    //does the breed already exist
     public boolean existsByName(String name){
+        LOGGER.info("calling existsByName from service");
         return breedRepository.existsByName(name);
     }
 }
