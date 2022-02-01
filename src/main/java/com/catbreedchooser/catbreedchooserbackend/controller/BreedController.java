@@ -41,17 +41,17 @@ public class BreedController {
     //returns only the photo reference string
     //http:localhost:9092/api/names
     @GetMapping("/names")
-    public List<String> getBreedNames() {
+    public List<List<String>> getBreedNames() {
         LOGGER.info("calling getPictures from controller");
         return breedService.getBreedNames();
     }
 
     //returns a breed when searched for by name
     //http:localhost:9092/api/name
-    @GetMapping("/name")
-    public Breed getBreedByName(String name) {
+    @GetMapping("/id")
+    public Breed getBreedById(String id) {
         LOGGER.info("calling getPictures from controller");
-        return breedService.getBreedByName(name);
+        return breedService.getBreedById(id);
     }
 
 }

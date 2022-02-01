@@ -57,23 +57,27 @@ public class BreedService {
     }
 
     //get list of breed names
-    public List<String> getBreedNames() {
+    public List<List<String>> getBreedNames() {
         LOGGER.info("calling getBreedNames from service");
-        List<String> names = new ArrayList<>();
+        List<List<String>> names = new ArrayList<>();
         List<Breed> breeds = breedRepository.findByNameNotNull();
         breeds.forEach( (element) -> {
             String name = element.getName();
-            if (name != null) {
-                names.add(name);
+            String id = element.getId();
+            if (name != null && id != null) {
+                List<String> nameId = new ArrayList<>();
+                nameId.add(name);
+                nameId.add(id);
+                names.add(nameId);
             }
         });
         return names;
     }
 
     //get a single breed by name
-    public Breed getBreedByName(String name){
-        LOGGER.info("calling getBreedByName from service");
-        return breedRepository.findByName(name);
+    public Breed getBreedById(String id){
+        LOGGER.info("calling getBreedById from service");
+        return breedRepository.findById(id);
     }
 
     //does the breed already exist
