@@ -10,6 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.logging.Logger;
 
 @Service
@@ -48,9 +53,20 @@ public class CatService {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             CatBreedToAdd catBreedToAdd = objectMapper.convertValue(object,CatBreedToAdd.class);
-            //System.out.println(catBreedToAdd.toString());
-            addResultToDatabase(catBreedToAdd);
-
+            String ref = catBreedToAdd.getReference_image_id();
+            //in order to be added to the database, there must be a picture
+            if (ref == null) {
+            } else if (!ref.contains("\n") ) {
+                try {
+                    String s = getHttpResponse(catBreedToAdd.getReference_image_id());
+                    //the picture must be accessible
+                    if (s.endsWith("200")) {
+                        addResultToDatabase(catBreedToAdd);
+                    }
+                } catch (IOException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         });
         return jsonArray;
     }
@@ -59,5 +75,15 @@ public class CatService {
     public void addResultToDatabase(CatBreedToAdd catBreed) {
         LOGGER.info("calling addResultToDatabase from service");
         breedService.createBreed(catBreed);
+    }
+
+    public String getHttpResponse(String ref) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .GET()
+                .uri(URI.create("https://cdn2.thecatapi.com/images/"+ref+".jpg"))
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.toString();
     }
 }
