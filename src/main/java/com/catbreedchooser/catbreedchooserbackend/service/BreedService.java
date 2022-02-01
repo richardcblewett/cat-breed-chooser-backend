@@ -56,4 +56,8 @@ public class BreedService {
         });
         return pictures;
     }
+
+    public boolean existsByName(String name){
+        return breedRepository.existsByName(name);
+    }
 }

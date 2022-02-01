@@ -56,6 +56,7 @@ public class CatService {
             String ref = catBreedToAdd.getReference_image_id();
             //in order to be added to the database, there must be a picture
             if (ref == null) {
+            } else if (breedService.existsByName(catBreedToAdd.getName())) {
             } else if (!ref.contains("\n") ) {
                 try {
                     String s = getHttpResponse(catBreedToAdd.getReference_image_id());
