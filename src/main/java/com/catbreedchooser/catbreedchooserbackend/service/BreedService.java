@@ -44,14 +44,17 @@ public class BreedService {
     }
 
     //get list of pictures
-    public List<String> getPictures() {
+    public List<List<String>> getPictures() {
         LOGGER.info("calling getPictures from service");
-        List<String> pictures = new ArrayList<>();
+        List<List<String>> pictures = new ArrayList<>();
         List<Breed> breeds = breedRepository.findByNameNotNull();
         breeds.forEach((element) -> {
             String refId = element.getReference_image_id();
             if (refId != null) {
-                pictures.add("https://cdn2.thecatapi.com/images/" + refId + ".jpg");
+                List<String> pictureId = new ArrayList<>();
+                pictureId.add(refId);
+                pictureId.add(element.getId());
+                pictures.add(pictureId);
             }
         });
         return pictures;

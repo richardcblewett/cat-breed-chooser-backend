@@ -33,7 +33,7 @@ public class BreedController {
     //returns only the photo reference string
     //http:localhost:9092/api/pictures
     @GetMapping("/pictures")
-    public List<String> getPictures() {
+    public List<List<String>> getPictures() {
         LOGGER.info("calling getPictures from controller");
         return breedService.getPictures();
     }
