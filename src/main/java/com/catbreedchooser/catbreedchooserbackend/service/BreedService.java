@@ -5,7 +5,6 @@ import com.catbreedchooser.catbreedchooserbackend.model.Breed;
 import com.catbreedchooser.catbreedchooserbackend.repository.BreedRepository;
 import com.catbreedchooser.catbreedchooserbackend.thecatapi.CatBreedToAdd;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,16 +17,18 @@ public class BreedService {
     private static final Logger LOGGER = Logger.getLogger(BreedService.class.getName());
 
     @Autowired
-    public void setBreedRepository(BreedRepository breedRepository) {this.breedRepository = breedRepository;}
+    public void setBreedRepository(BreedRepository breedRepository) {
+        this.breedRepository = breedRepository;
+    }
 
     //add breed to database
-    public void createBreed(CatBreedToAdd catBreed){
+    public void createBreed(CatBreedToAdd catBreed) {
         LOGGER.info("calling createBreed from service");
         Breed newBreed = new Breed(catBreed);
         if (!breedRepository.existsByName(newBreed.getName())) {
             breedRepository.save(newBreed);
         } else {
-            LOGGER.info("the breed "+newBreed.getName()+" is already in the database");
+            LOGGER.info("the breed " + newBreed.getName() + " is already in the database");
         }
     }
 
@@ -47,10 +48,10 @@ public class BreedService {
         LOGGER.info("calling getPictures from service");
         List<String> pictures = new ArrayList<>();
         List<Breed> breeds = breedRepository.findByNameNotNull();
-        breeds.forEach( (element) -> {
+        breeds.forEach((element) -> {
             String refId = element.getReference_image_id();
             if (refId != null) {
-                pictures.add("https://cdn2.thecatapi.com/images/"+refId+".jpg");
+                pictures.add("https://cdn2.thecatapi.com/images/" + refId + ".jpg");
             }
         });
         return pictures;
@@ -61,7 +62,7 @@ public class BreedService {
         LOGGER.info("calling getBreedNames from service");
         List<List<String>> names = new ArrayList<>();
         List<Breed> breeds = breedRepository.findByNameNotNull();
-        breeds.forEach( (element) -> {
+        breeds.forEach((element) -> {
             String name = element.getName();
             String id = element.getId();
             if (name != null && id != null) {
@@ -75,14 +76,28 @@ public class BreedService {
     }
 
     //get a single breed by name
-    public Breed getBreedById(String id){
+    public Breed getBreedById(String id) {
         LOGGER.info("calling getBreedById from service");
         return breedRepository.findById(id);
     }
 
     //does the breed already exist
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         LOGGER.info("calling existsByName from service");
         return breedRepository.existsByName(name);
+    }
+
+    public List<Breed> searchBreeds(Long child_friendly, Long intelligence) {
+        LOGGER.info("calling searchBreeds from service");
+        List<Breed> result = new ArrayList<>();
+        List<Breed> breeds = breedRepository.findByNameNotNull();
+        breeds.forEach((element) -> {
+            if (element.getChild_friendly() != null && element.getIntelligence() != null) {
+                if (element.getIntelligence() >= intelligence && element.getChild_friendly() >= child_friendly) {
+                    result.add(element);
+                }
+            }
+        });
+        return result;
     }
 }

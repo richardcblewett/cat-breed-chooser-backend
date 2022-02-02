@@ -54,4 +54,10 @@ public class BreedController {
         return breedService.getBreedById(id);
     }
 
+    @GetMapping("/search")
+    public List<Breed> searchBreeds(Long child_friendly, Long intelligence){
+        LOGGER.info("calling search from controller");
+        return breedService.searchBreeds(child_friendly,intelligence);
+    }
+
 }
