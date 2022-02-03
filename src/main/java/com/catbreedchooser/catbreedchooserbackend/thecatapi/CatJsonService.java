@@ -1,7 +1,6 @@
 package com.catbreedchooser.catbreedchooserbackend.thecatapi;
 
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
 
@@ -15,7 +14,6 @@ public class CatJsonService {
         FileReader reader = new FileReader("catBreeds.json");
         //Read JSON file
         Object obj = jsonParser.parse(reader);
-        JSONArray jsonArray = (JSONArray) obj;
-        return jsonArray;
+        return (JSONArray) obj;
     }
 }

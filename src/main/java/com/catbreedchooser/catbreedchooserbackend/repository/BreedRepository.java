@@ -2,7 +2,6 @@ package com.catbreedchooser.catbreedchooserbackend.repository;
 
 import com.catbreedchooser.catbreedchooserbackend.model.Breed;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
