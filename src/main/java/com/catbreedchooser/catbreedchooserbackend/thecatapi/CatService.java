@@ -48,8 +48,6 @@ public class CatService {
     public JSONArray addResultsToDatabase(JSONArray jsonArray) {
         LOGGER.info("calling addResultSToDatabase from service");
         jsonArray.forEach( object -> {
-            //System.out.println(object.toString());//prints individual json objects
-            //System.out.println('\n');
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             CatBreedToAdd catBreedToAdd = objectMapper.convertValue(object,CatBreedToAdd.class);
