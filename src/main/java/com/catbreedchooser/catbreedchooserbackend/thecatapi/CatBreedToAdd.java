@@ -17,12 +17,12 @@ public class CatBreedToAdd {
     private Integer vocalisation;
     private Integer description_id;
     private String description;
-
+    private Integer grooming;
 
     public CatBreedToAdd() {
     }
 
-    public CatBreedToAdd(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization) {
+    public CatBreedToAdd(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization, Integer grooming) {
         this.id = breed_id;
         this.name = name;
         this.reference_image_id = reference_image_id;
@@ -37,6 +37,7 @@ public class CatBreedToAdd {
         this.shedding_level = shedding_level;
         this.social_needs = social_needs;
         this.vocalisation = vocalization;
+        this.grooming = grooming;
     }
 
     public String getId() {
@@ -157,5 +158,13 @@ public class CatBreedToAdd {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getGrooming() {
+        return grooming;
+    }
+
+    public void setGrooming(Integer grooming) {
+        this.grooming = grooming;
     }
 }
