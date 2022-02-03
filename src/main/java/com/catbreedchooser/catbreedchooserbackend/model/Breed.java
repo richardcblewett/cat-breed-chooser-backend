@@ -59,6 +59,9 @@ public class Breed {
     @Column
     private Integer vocalisation;
 
+    @Column
+    private Integer grooming;
+
     public Breed() {
     }
 
@@ -78,9 +81,10 @@ public class Breed {
         this.social_needs = catBreedToAdd.getSocial_needs();
         this.vocalisation = catBreedToAdd.getVocalisation();
         this.description = catBreedToAdd.getDescription();
+        this.grooming = catBreedToAdd.getGrooming();
     }
 
-    public Breed(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization, String description) {
+    public Breed(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization, String description, Integer grooming) {
         this.id = breed_id;
         this.name = name;
         this.reference_image_id = reference_image_id;
@@ -96,6 +100,7 @@ public class Breed {
         this.social_needs = social_needs;
         this.vocalisation = vocalization;
         this.description = description;
+        this.grooming = grooming;
     }
 
     public Long getIdTable() {
@@ -224,5 +229,13 @@ public class Breed {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getGrooming() {
+        return grooming;
+    }
+
+    public void setGrooming(Integer grooming) {
+        this.grooming = grooming;
     }
 }
