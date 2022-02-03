@@ -40,3 +40,25 @@ After cloning the repository, make sure you have the dependencies installed befo
 - IntelliJ IDEA (IDE)
 <br><br>
 
+# Design
+
+My original design for the backend was to have a database table for basic cat breed characteristics, another database table for the breed description in order to not overwhelm the first table, and then to have a third table to store some keywords associated with breeds. (This last item was to be an implementation option after achieving MVP.)<br>
+
+Seeding the database was accomplished by opening an api endpoint (by removing security) that would immediately call thecatapi and adding the results of the "give me all thecatapi breeds" call to the database. Results from the external api call were added to the database as long as the breed had a name, had a photo, and the photo was accessible to the backend.<br> 
+
+After deploying the backend, I realized I have no idea if the database performance would be improved by giving breed descriptions their own database, so I pivoted from my original ERD designs and refactored the databases from 2 down to 1.<br>
+
+## ERD Diagrams
+| Original                                                            | Final                                                          |    
+|---------------------------------------------------------------------|----------------------------------------------------------------|    
+| <img src="./planning/CatBreedChooserERD-ORIGINAL.png" height=300px> | <img src="./planning/CatBreedChooserERD-MVP.png" height=300px> |  
+<br>
+
+## Searching
+Rather than create a new JPA Query for every specific combination of parameters, for the most part I chose to use one query that would return all breeds and then filter out the breeds that did not meet the input criteria. I chose to do things this way because some of my earlier query attempts were returning errors and this was another way to give me the results I was looking for.<br>
+
+As the old adage goes: "There's more than one way to skin a cat." <br>
+
+## Security
+Spring security is included in the code, but not fully implemented. I chose to have everything ready in case there was time to implement user logins and user profiles - but there was not. 
+<br><br>
