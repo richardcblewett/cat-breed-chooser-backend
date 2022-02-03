@@ -12,7 +12,7 @@ After cloning the repository, make sure you have the dependencies installed befo
 
 ## Dependencies
 - An IDE that can interface with springboot (such as VSCode or IntelliJ IDEA)
-- git (https://git.scm.com/downloads)
+- Git (https://git.scm.com/downloads)
 - PostgresSQL (https://www.postgresql.org/download/)
 
 ## Run the Project
@@ -30,3 +30,13 @@ After cloning the repository, make sure you have the dependencies installed befo
 | GET          | /api/search   | child_friendly <br> intelligence <br> grooming | Authorization: none | finds breeds that meet the criteria                     | PUBLIC |
 | GET          | /breeds       |                                                | Authorization: none | gets all breeds from thecatapi (hidden by security)     | PUBLIC |
 <br><br>
+
+# Technologies Used
+- Git
+- Lucid.app (ERD design)
+- PostGreSQL
+- Postman
+- VS Code (IDE)
+- IntelliJ IDEA (IDE)
+<br><br>
+
