@@ -16,7 +16,9 @@ public class CatController {
     private CatService catservice;
 
     @Autowired
-    public void setCatService(CatService catservice){this.catservice = catservice;}
+    public void setCatService(CatService catservice) {
+        this.catservice = catservice;
+    }
 
     @GetMapping(path = "/breeds")
     public JSONArray getCatApiBreeds() {
@@ -24,8 +26,4 @@ public class CatController {
         return catservice.getCatApiBreeds();
     }
 
-    @GetMapping(path = "/json")
-    public void getJson() {
-
-    }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping(path="/api")
+@RequestMapping(path = "/api")
 public class BreedController {
 
     private BreedService breedService;
@@ -22,42 +22,42 @@ public class BreedController {
         this.breedService = breedService;
     }
 
-    //returns everything
-    //http:localhost:9092/api/breeds
+    // returns everything
+    // http:localhost:9092/api/breeds
     @GetMapping("/breeds")
     public List<Breed> getBreeds() {
         LOGGER.info("calling getBreeds from controller");
         return breedService.getBreeds();
     }
 
-    //returns only the photo reference string
-    //http:localhost:9092/api/pictures
+    // returns only the photo reference string
+    // http:localhost:9092/api/pictures
     @GetMapping("/pictures")
     public List<List<String>> getPictures() {
         LOGGER.info("calling getPictures from controller");
         return breedService.getPictures();
     }
 
-    //returns only the photo reference string
-    //http:localhost:9092/api/names
+    // http:localhost:9092/api/names
     @GetMapping("/names")
     public List<List<String>> getBreedNames() {
         LOGGER.info("calling getPictures from controller");
         return breedService.getBreedNames();
     }
 
-    //returns a breed when searched for by name
-    //http:localhost:9092/api/name
+    // returns a breed when searched for by name
+    // http:localhost:9092/api/id
     @GetMapping("/id")
     public Breed getBreedById(String id) {
         LOGGER.info("calling getPictures from controller");
         return breedService.getBreedById(id);
     }
 
+    // http:localhost:9092/api/search?query
     @GetMapping("/search")
-    public List<Breed> searchBreeds(Long child_friendly, Long intelligence, Long grooming){
+    public List<Breed> searchBreeds(Long child_friendly, Long intelligence, Long grooming) {
         LOGGER.info("calling search from controller");
-        return breedService.searchBreeds(child_friendly,intelligence,grooming);
+        return breedService.searchBreeds(child_friendly, intelligence, grooming);
     }
 
 }
