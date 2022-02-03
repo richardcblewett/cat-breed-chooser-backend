@@ -100,7 +100,7 @@ public class BreedService {
                     && element.getGrooming() != null) {
                 if (element.getIntelligence() >= intelligence
                         && element.getChild_friendly() >= child_friendly
-                        && element.getGrooming() >= grooming) {
+                        && element.getGrooming() <= grooming) {
                     result.add(element);
                 }
             }
