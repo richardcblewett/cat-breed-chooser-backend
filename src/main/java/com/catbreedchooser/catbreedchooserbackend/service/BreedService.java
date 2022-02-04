@@ -90,16 +90,16 @@ public class BreedService {
         return breedRepository.existsByName(name);
     }
 
-    public List<Breed> searchBreeds(Long child_friendly, Long intelligence, Long grooming) {
+    public List<Breed> searchBreeds(Long childFriendly, Long intelligence, Long grooming) {
         LOGGER.info("calling searchBreeds from service");
         List<Breed> result = new ArrayList<>();
         List<Breed> breeds = breedRepository.findByNameNotNull();
         breeds.forEach((element) -> {
-            if (element.getChild_friendly() != null
+            if (element.getChildFriendly() != null
                     && element.getIntelligence() != null
                     && element.getGrooming() != null) {
                 if (element.getIntelligence() >= intelligence
-                        && element.getChild_friendly() >= child_friendly
+                        && element.getChildFriendly() >= childFriendly
                         && element.getGrooming() <= grooming) {
                     result.add(element);
                 }
