@@ -82,6 +82,15 @@ All user stories assume the user is interested in getting a new cat and wants to
 - As a user, I want to be able to search in my local area for specific breeds of cat that are available to adopt.   
   - _Once user information is incorporated, this options may become a possibility. But it would be a ways down the road._
 - As a user, I want to receive alerts when a cat of a specific breed is available to adopt in my area.   
-  - _Again, this would depend on having user and location area available. May be the equivalent of a pipe dream_
+  - _Again, this would depend on having user and location area available. Maybe the equivalent of a pipe dream._
+<br><br>
 
+# Hurdles Overcome
+1. As mentioned previously, initial issues with getting data from the database led me to find a way to avoid the issue. I didn't want to risk the solution being to restructure the database rather than to restructure queries. (The specific issue was an inability to return a "Breed" object from a query.)
+2. As a way to seed the database from the api one time without allowing a user to do the same, I created a separate branch that has access to the seeding endpoint. If the database ever needs to be reconstructed, only a person with access to the source code will be able to do that.
+<br><br>
+
+# Unresolved Issues
+1. As previously mentioned, the database access could be fine-tuned so JPA queries are used.
+2. I don't feel great about having unused data tables for users, but the solution to that issue would be to either add functionality to the website or to decide not to do so. Right now we remain in limbo. 
 <br><br>
