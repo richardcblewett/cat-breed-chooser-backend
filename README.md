@@ -21,25 +21,27 @@ TABLE OF CONTENTES
 
 This project is the backend for the cat breed chooser app frontend available here: https://cat-breed-chooser.herokuapp.com.<br>
 
-The purpose of this app is to supply data that originated from [thecatapi](https://thecatapi.com) to the frontend application. Using a backend rather the api directly allows the data processing to happen on a server rather than use the client resources.
+The purpose of this app is to supply data that originated from [thecatapi](https://thecatapi.com) to the frontend application.<br>
+
+Using a backend rather the api directly allows the data processing to happen on a server rather than use the client resources.
 <br><br>
 
 # Installation Instructions
 
-If you would like install this project on your computer rather than use the online version hosted at https://cat-breed-chooser-backend.herokuapp.com, you may clone this repository to your computer. (Also feel free to check out the frontend repository at https://github.com/richardcblewett/cat-breed-chooser)
+If you would like install this project on your local computer (the online version is hosted at https://cat-breed-chooser-backend.herokuapp.com), you may clone this repository to your computer. (Also feel free to check out the frontend repository at https://github.com/richardcblewett/cat-breed-chooser)
 
 After cloning the repository, make sure you have the dependencies installed before following the instructions on how to run the project.
 
 ## Dependencies
 
-- An IDE that can interface with springboot (such as VSCode or IntelliJ IDEA)
+- An IDE that can interface with Spring (such as VSCode or IntelliJ IDEA)
 - Git (https://git.scm.com/downloads)
 - PostgresSQL (https://www.postgresql.org/download/)
 
 ## Run the Project
 
 - Open the cloned project with the IDE.
-- Check the configuration settings in ```src/main/resources/application-dev.properties``` and make sure the postgres settings match your own.
+- Check the configuration settings in ```src/main/resources/application-dev.properties``` and make sure the postgres settings in the source code match your own.
   <br><br>
 
 ### Endpoints
@@ -71,7 +73,7 @@ My original design for the backend was to have a database table for basic cat br
 
 Seeding the database was accomplished by opening an api endpoint (by removing security) that would immediately call thecatapi and adding the results of the "give me all thecatapi breeds" call to the database. Results from the external api call were added to the database as long as the breed had a name, had a photo, and the photo was accessible to the backend.<br>
 
-After deploying the backend, I realized I have no idea if the database performance would be improved by giving breed descriptions their own database, so I pivoted from my original ERD designs and refactored the databases from 2 down to 1.<br>
+After deploying the backend, I realized I have no idea if the database performance would be improved by giving breed descriptions their own database, so I pivoted from my original ERD designs and went with one table instead of two.<br>
 
 ## ERD Diagrams
 
@@ -83,7 +85,7 @@ After deploying the backend, I realized I have no idea if the database performan
 
 ## Searching
 
-Rather than create a new JPA Query for every specific combination of parameters, for the most part I chose to use one query that would return all breeds and then filter out the breeds that did not meet the input criteria. I chose to do things this way because some of my earlier query attempts were returning errors and this was another way to give me the results I was looking for.<br>
+Rather than create a new JPA Query for every specific combination of parameters, for the most part I chose to use one query that would return all breeds. I would then filter out the breeds that did not meet the input criteria. I chose to do things this way because some of my earlier query attempts were returning errors and this was another way to give me the results I was looking for.<br>
 
 As the old adage goes: "There's more than one way to skin a cat." <br>
 
@@ -98,10 +100,10 @@ All user stories assume the user is interested in getting a new cat and wants to
 
 ## MVP
 
-[x] As a user, I want to be able to browse the different breeds of cat so that I can do some research on breeds I know and find out if they will be a good choice for me.   
-[x] As a user who has children, I want to be able to search for cats that a good with children so I don't have to worry about cats and children not getting along.   
-[x] As a user who values intelligence, I want to be able to search for cat breeds that are at or above a certain intelligence threshold.   
-[x] As a user who likes clean animals, I want to be able to search cat breeds and exclude those breeds who are not up to my standards.
+- [x] As a user, I want to be able to browse the different breeds of cat so that I can do some research on breeds I know and find out if they will be a good choice for me.   
+- [x] As a user who has children, I want to be able to search for cats that a good with children so I don't have to worry about cats and children not getting along.   
+- [x] As a user who values intelligence, I want to be able to search for cat breeds that are at or above a certain intelligence threshold.   
+- [x] As a user who likes clean animals, I want to be able to search cat breeds and exclude those breeds who are not up to my standards.
 
 ## Future Goals
 
