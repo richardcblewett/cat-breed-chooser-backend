@@ -14,8 +14,8 @@ import java.util.logging.Logger;
 @RequestMapping(path = "/api")
 public class BreedController {
 
-    private BreedService breedService;
     private static final Logger LOGGER = Logger.getLogger(BreedController.class.getName());
+    private BreedService breedService;
 
     @Autowired
     public void setBreedService(BreedService breedService) {

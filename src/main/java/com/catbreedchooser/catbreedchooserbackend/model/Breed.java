@@ -5,7 +5,7 @@ import com.catbreedchooser.catbreedchooserbackend.thecatapi.CatBreedToAdd;
 import javax.persistence.*;
 
 @Entity
-@Table(name="breed")
+@Table(name = "breed")
 public class Breed {
     @Id
     @Column
@@ -65,7 +65,7 @@ public class Breed {
     public Breed() {
     }
 
-    public Breed(CatBreedToAdd catBreedToAdd){
+    public Breed(CatBreedToAdd catBreedToAdd) {
         this.id = catBreedToAdd.getId();
         this.name = catBreedToAdd.getName();
         this.reference_image_id = catBreedToAdd.getReference_image_id();
