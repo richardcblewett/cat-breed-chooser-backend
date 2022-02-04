@@ -108,6 +108,7 @@ All user stories assume the user is interested in getting a new cat and wants to
 ## Future Goals
 
 - As a user, I want to be able to search for more cat breed characteristics.
+    _To do so, follow the general outline of [this commit](https://github.com/richardcblewett/cat-breed-chooser-backend/commit/d4ea9ae8f79db4c18ae82227f4482229572db804?diff=split)._
     - _The backend database has more data that could be accessed - it is a matter of finding the time to expand the frontend query form and update the backend to return more data._
     - _There is always the option to return more data from the backend by default, but sending an entire database the frontend on a query defeats the purpose of having a backend._
 - As a user, I want to be able to login to the site and keep track of the different cat breeds in which I am interested.
