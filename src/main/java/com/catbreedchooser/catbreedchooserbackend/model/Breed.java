@@ -1,6 +1,7 @@
 package com.catbreedchooser.catbreedchooserbackend.model;
 
 import com.catbreedchooser.catbreedchooserbackend.thecatapi.CatBreedToAdd;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.*;
 
@@ -27,40 +28,40 @@ public class Breed {
 
     // number fields
     @Column
-    private Integer adaptability;
+    private Long adaptability;
 
     @Column
-    private Integer affection_level;
+    private Long affection_level;
 
     @Column
-    private Integer child_friendly;
+    private Long child_friendly;
 
     @Column
-    private Integer dog_friendly;
+    private Long dog_friendly;
 
     @Column
-    private Integer energy_level;
+    private Long energy_level;
 
     @Column
-    private Integer hypoallergenic;
+    private Long hypoallergenic;
 
     @Column
-    private Integer intelligence;
+    private Long intelligence;
 
     @Column
-    private Integer lap;
+    private Long lap;
 
     @Column
-    private Integer shedding_level;
+    private Long shedding_level;
 
     @Column
-    private Integer social_needs;
+    private Long social_needs;
 
     @Column
-    private Integer vocalisation;
+    private Long vocalisation;
 
     @Column
-    private Integer grooming;
+    private Long grooming;
 
     public Breed() {
     }
@@ -84,7 +85,7 @@ public class Breed {
         this.grooming = catBreedToAdd.getGrooming();
     }
 
-    public Breed(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization, String description, Integer grooming) {
+    public Breed(String breed_id, String name, String reference_image_id, Long adaptability, Long affection_level, Long child_friendly, Long dog_friendly, Long energy_level, Long hypoallergenic, Long intelligence, Long lap, Long shedding_level, Long social_needs, Long vocalization, String description, Long grooming) {
         this.id = breed_id;
         this.name = name;
         this.reference_image_id = reference_image_id;
@@ -135,91 +136,91 @@ public class Breed {
         this.reference_image_id = reference_image_id;
     }
 
-    public Integer getAdaptability() {
+    public Long getAdaptability() {
         return adaptability;
     }
 
-    public void setAdaptability(Integer adaptability) {
+    public void setAdaptability(Long adaptability) {
         this.adaptability = adaptability;
     }
 
-    public Integer getAffection_level() {
+    public Long getAffection_level() {
         return affection_level;
     }
 
-    public void setAffection_level(Integer affection_level) {
+    public void setAffection_level(Long affection_level) {
         this.affection_level = affection_level;
     }
 
-    public Integer getChild_friendly() {
+    public Long getChild_friendly() {
         return child_friendly;
     }
 
-    public void setChild_friendly(Integer child_friendly) {
+    public void setChild_friendly(Long child_friendly) {
         this.child_friendly = child_friendly;
     }
 
-    public Integer getDog_friendly() {
+    public Long getDog_friendly() {
         return dog_friendly;
     }
 
-    public void setDog_friendly(Integer dog_friendly) {
+    public void setDog_friendly(Long dog_friendly) {
         this.dog_friendly = dog_friendly;
     }
 
-    public Integer getEnergy_level() {
+    public Long getEnergy_level() {
         return energy_level;
     }
 
-    public void setEnergy_level(Integer energy_level) {
+    public void setEnergy_level(Long energy_level) {
         this.energy_level = energy_level;
     }
 
-    public Integer getHypoallergenic() {
+    public Long getHypoallergenic() {
         return hypoallergenic;
     }
 
-    public void setHypoallergenic(Integer hypoallergenic) {
+    public void setHypoallergenic(Long hypoallergenic) {
         this.hypoallergenic = hypoallergenic;
     }
 
-    public Integer getIntelligence() {
+    public Long getIntelligence() {
         return intelligence;
     }
 
-    public void setIntelligence(Integer intelligence) {
+    public void setIntelligence(Long intelligence) {
         this.intelligence = intelligence;
     }
 
-    public Integer getLap() {
+    public Long getLap() {
         return lap;
     }
 
-    public void setLap(Integer lap) {
+    public void setLap(Long lap) {
         this.lap = lap;
     }
 
-    public Integer getShedding_level() {
+    public Long getShedding_level() {
         return shedding_level;
     }
 
-    public void setShedding_level(Integer shedding_level) {
+    public void setShedding_level(Long shedding_level) {
         this.shedding_level = shedding_level;
     }
 
-    public Integer getSocial_needs() {
+    public Long getSocial_needs() {
         return social_needs;
     }
 
-    public void setSocial_needs(Integer social_needs) {
+    public void setSocial_needs(Long social_needs) {
         this.social_needs = social_needs;
     }
 
-    public Integer getVocalisation() {
+    public Long getVocalisation() {
         return vocalisation;
     }
 
-    public void setVocalisation(Integer vocalization) {
+    public void setVocalisation(Long vocalization) {
         this.vocalisation = vocalization;
     }
 
@@ -231,11 +232,11 @@ public class Breed {
         this.description = description;
     }
 
-    public Integer getGrooming() {
+    public Long getGrooming() {
         return grooming;
     }
 
-    public void setGrooming(Integer grooming) {
+    public void setGrooming(Long grooming) {
         this.grooming = grooming;
     }
 }
