@@ -21,14 +21,14 @@ After cloning the repository, make sure you have the dependencies installed befo
 <br><br>
 
 ### Endpoints:
-| Request Type | URL           | Request Body                                   | Request Header      | Action                                                  | Access |   
-|--------------|---------------|------------------------------------------------|---------------------|---------------------------------------------------------|--------|
-| GET          | /api/breeds   |                                                | Authorization: none | returns a list of all breeds (not used in the frontend) | PUBLIC |
-| GET          | /api/pictures |                                                | Authorization: none | returns image references and breed ids                  | PUBLIC |
-| GET          | /api/names    |                                                | Authorization: none | returns breed names and breed ids                       | PUBLIC |
-| GET          | /api/id       |                                                | Authorization: none | updates an existing movie                               | PUBLIC |
-| GET          | /api/search   | child_friendly <br> intelligence <br> grooming | Authorization: none | finds breeds that meet the criteria                     | PUBLIC |
-| GET          | /breeds       |                                                | Authorization: none | gets all breeds from thecatapi (hidden by security)     | PUBLIC |
+| Request Type | URL           | Request Body                                   | Request Header      | Action                                                                            | Access |   
+|--------------|---------------|------------------------------------------------|---------------------|-----------------------------------------------------------------------------------|--------|
+| GET          | /api/breeds   |                                                | Authorization: none | returns a list of all breeds (not used in the frontend)                           | PUBLIC |
+| GET          | /api/pictures |                                                | Authorization: none | returns image references and breed ids                                            | PUBLIC |
+| GET          | /api/names    |                                                | Authorization: none | returns breed names and breed ids                                                 | PUBLIC |
+| GET          | /api/id       |                                                | Authorization: none | updates an existing movie                                                         | PUBLIC |
+| GET          | /api/search   | child_friendly <br> intelligence <br> grooming | Authorization: none | finds breeds that meet the criteria                                               | PUBLIC |
+| GET          | /breeds       |                                                | Authorization: none | gets all breeds from thecatapi in order to seed the database (hidden by security) | PUBLIC |
 <br><br>
 
 # Technologies Used
@@ -61,4 +61,27 @@ As the old adage goes: "There's more than one way to skin a cat." <br>
 
 ## Security
 Spring security is included in the code, but not fully implemented. I chose to have everything ready in case there was time to implement user logins and user profiles - but there was not. 
+<br><br>
+
+# User Stories
+All user stories assume the user is interested in getting a new cat and wants to do some initial research about the different cat breeds available.
+
+## MVP
+[x] As a user, I want to be able to browse the different breeds of cat so that I can do some research on breeds I know and find out if they will be a good choice for me.   
+[x] As a user who has children, I want to be able to search for cats that a good with children so I don't have to worry about cats and children not getting along.   
+[x] As a user who values intelligence, I want to be able to search for cat breeds that are at or above a certain intelligence threshold.   
+[x] As a user who likes clean animals, I want to be able to search cat breeds and exclude those breeds who are not up to my standards.
+
+## Future Goals
+- As a user, I want to be able to search for more cat breed characteristics.     
+  - _The backend database has more data that could be accessed - it is a matter of finding the time to expand the frontend query form and update the backend to return more data._   
+  - _There is always the option to return more data from the backend by default, but sending an entire database the frontend on a query defeats the purpose of having a backend._
+- As a user, I want to be able to login to the site and keep track of the different cat breeds in which I am interested.   
+  - _Most of the backend code to allow this is already in place, but needs to be implemented._  
+  - _In order to correctly implement user accounts, I would want to use available authentication services such as Google Authenticator and other similar tools. I'd rather not track individual users personal information_
+- As a user, I want to be able to search in my local area for specific breeds of cat that are available to adopt.   
+  - _Once user information is incorporated, this options may become a possibility. But it would be a ways down the road._
+- As a user, I want to receive alerts when a cat of a specific breed is available to adopt in my area.   
+  - _Again, this would depend on having user and location area available. May be the equivalent of a pipe dream_
+
 <br><br>
