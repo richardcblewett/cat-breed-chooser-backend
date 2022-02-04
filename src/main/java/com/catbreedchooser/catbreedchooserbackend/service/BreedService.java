@@ -13,8 +13,8 @@ import java.util.logging.Logger;
 
 @Service
 public class BreedService {
-    private BreedRepository breedRepository;
     private static final Logger LOGGER = Logger.getLogger(BreedService.class.getName());
+    private BreedRepository breedRepository;
 
     @Autowired
     public void setBreedRepository(BreedRepository breedRepository) {
