@@ -5,7 +5,7 @@ TABLE OF CONTENTES
 - [Installation Instructions](#installation-instructions)
   * [Dependencies](#dependencies)
   * [Run the Project](#run-the-project)
-    + [Endpoints:](#endpoints-)
+    + [Endpoints](#endpoints)
 - [Technologies Used](#technologies-used)
 - [Design](#design)
   * [ERD Diagrams](#erd-diagrams)
@@ -42,7 +42,7 @@ After cloning the repository, make sure you have the dependencies installed befo
 - Check the configuration settings in ```src/main/resources/application-dev.properties``` and make sure the postgres settings match your own.
   <br><br>
 
-### Endpoints:
+### Endpoints
 
 | Request Type | URL           | Request Body                                   | Request Header      | Action                                                                            | Access |   
 |--------------|---------------|------------------------------------------------|---------------------|-----------------------------------------------------------------------------------|--------|
