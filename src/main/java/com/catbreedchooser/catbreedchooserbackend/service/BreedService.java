@@ -49,7 +49,7 @@ public class BreedService {
         List<List<String>> pictures = new ArrayList<>();
         List<Breed> breeds = breedRepository.findByNameNotNullAndIdNotNull();
         breeds.forEach((element) -> {
-            String refId = element.getReference_image_id();
+            String refId = element.getImageId();
             if (refId != null) {
                 List<String> pictureId = new ArrayList<>();
                 pictureId.add(refId);
