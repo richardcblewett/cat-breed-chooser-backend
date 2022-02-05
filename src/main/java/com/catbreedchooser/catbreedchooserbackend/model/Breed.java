@@ -89,8 +89,8 @@ public class Breed {
         return idTable;
     }
 
-    public void setIdTable(Long id) {
-        this.idTable = id;
+    public void setIdTable(Long idTable) {
+        this.idTable = idTable;
     }
 
     public String getId() {
@@ -115,6 +115,14 @@ public class Breed {
 
     public void setImageId(String imageId) {
         this.imageId = imageId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getAdaptability() {
@@ -201,16 +209,8 @@ public class Breed {
         return vocalisation;
     }
 
-    public void setVocalisation(Long vocalization) {
-        this.vocalisation = vocalization;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setVocalisation(Long vocalisation) {
+        this.vocalisation = vocalisation;
     }
 
     public Long getGrooming() {
