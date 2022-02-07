@@ -18,7 +18,7 @@ public class UserProfile {
     private User user;
 
 
-    public UserProfile(){
+    public UserProfile() {
     }
 
     public UserProfile(User user) {

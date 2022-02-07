@@ -22,15 +22,15 @@ public class CatService {
 
     private static final Logger LOGGER = Logger.getLogger(CatService.class.getName());
     private BreedService breedService;
-
-    @Autowired
-    public void setBreedService(BreedService breedService) {this.breedService = breedService;}
-
     @Autowired
     private RestTemplate restTemplate;
-
     private String key = "f4fb05db-2de9-4da7-9987-6b58b7d5b6d8";
     private String url = "https://api.thecatapi.com/v1/breeds";
+
+    @Autowired
+    public void setBreedService(BreedService breedService) {
+        this.breedService = breedService;
+    }
 
     public JSONArray getCatApiBreeds() {
         LOGGER.info("calling getCatApiBreeds from service");
@@ -47,17 +47,15 @@ public class CatService {
     //add them all
     public JSONArray addResultsToDatabase(JSONArray jsonArray) {
         LOGGER.info("calling addResultSToDatabase from service");
-        jsonArray.forEach( object -> {
-            //System.out.println(object.toString());//prints individual json objects
-            //System.out.println('\n');
+        jsonArray.forEach(object -> {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            CatBreedToAdd catBreedToAdd = objectMapper.convertValue(object,CatBreedToAdd.class);
+            CatBreedToAdd catBreedToAdd = objectMapper.convertValue(object, CatBreedToAdd.class);
             String ref = catBreedToAdd.getReference_image_id();
             //in order to be added to the database, there must be a picture
             if (ref == null) {
             } else if (breedService.existsByName(catBreedToAdd.getName())) {
-            } else if (!ref.contains("\n") ) {
+            } else if (!ref.contains("\n")) {
                 try {
                     String s = getHttpResponse(catBreedToAdd.getReference_image_id());
                     //the picture must be accessible
@@ -82,7 +80,7 @@ public class CatService {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("https://cdn2.thecatapi.com/images/"+ref+".jpg"))
+                .uri(URI.create("https://cdn2.thecatapi.com/images/" + ref + ".jpg"))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response.toString();

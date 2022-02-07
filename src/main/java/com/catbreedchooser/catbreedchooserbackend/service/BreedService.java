@@ -13,8 +13,8 @@ import java.util.logging.Logger;
 
 @Service
 public class BreedService {
-    private BreedRepository breedRepository;
     private static final Logger LOGGER = Logger.getLogger(BreedService.class.getName());
+    private BreedRepository breedRepository;
 
     @Autowired
     public void setBreedRepository(BreedRepository breedRepository) {
@@ -35,7 +35,7 @@ public class BreedService {
     //get all breeds
     public List<Breed> getBreeds() {
         LOGGER.info("calling getBreeds from service");
-        List<Breed> breeds = breedRepository.findByNameNotNull();
+        List<Breed> breeds = breedRepository.findByNameNotNullAndIdNotNull();
         if (breeds.isEmpty()) {
             throw new InformationMissingException("there are no breeds in the database");
         } else {
@@ -47,9 +47,9 @@ public class BreedService {
     public List<List<String>> getPictures() {
         LOGGER.info("calling getPictures from service");
         List<List<String>> pictures = new ArrayList<>();
-        List<Breed> breeds = breedRepository.findByNameNotNull();
+        List<Breed> breeds = breedRepository.findByNameNotNullAndIdNotNull();
         breeds.forEach((element) -> {
-            String refId = element.getReference_image_id();
+            String refId = element.getImageId();
             if (refId != null) {
                 List<String> pictureId = new ArrayList<>();
                 pictureId.add(refId);
@@ -64,7 +64,7 @@ public class BreedService {
     public List<List<String>> getBreedNames() {
         LOGGER.info("calling getBreedNames from service");
         List<List<String>> names = new ArrayList<>();
-        List<Breed> breeds = breedRepository.findByNameNotNull();
+        List<Breed> breeds = breedRepository.findByNameNotNullAndIdNotNull();
         breeds.forEach((element) -> {
             String name = element.getName();
             String id = element.getId();
@@ -90,17 +90,8 @@ public class BreedService {
         return breedRepository.existsByName(name);
     }
 
-    public List<Breed> searchBreeds(Long child_friendly, Long intelligence) {
+    public List<Breed> searchBreeds(Long childFriendly, Long intelligence, Long grooming) {
         LOGGER.info("calling searchBreeds from service");
-        List<Breed> result = new ArrayList<>();
-        List<Breed> breeds = breedRepository.findByNameNotNull();
-        breeds.forEach((element) -> {
-            if (element.getChild_friendly() != null && element.getIntelligence() != null) {
-                if (element.getIntelligence() >= intelligence && element.getChild_friendly() >= child_friendly) {
-                    result.add(element);
-                }
-            }
-        });
-        return result;
+        return breedRepository.findByChildFriendlyIsGreaterThanEqualAndIntelligenceIsGreaterThanEqualAndGroomingIsLessThanEqual(childFriendly,intelligence,grooming);
     }
 }

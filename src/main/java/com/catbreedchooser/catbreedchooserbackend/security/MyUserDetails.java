@@ -55,7 +55,7 @@ public class MyUserDetails implements UserDetails {
         return true;
     }
 
-    public User getUser(){
+    public User getUser() {
         return user;
     }
 }

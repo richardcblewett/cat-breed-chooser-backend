@@ -1,8 +1,8 @@
 package com.catbreedchooser.catbreedchooserbackend.security;
 
+import com.catbreedchooser.catbreedchooserbackend.model.User;
 import com.catbreedchooser.catbreedchooserbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.catbreedchooser.catbreedchooserbackend.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

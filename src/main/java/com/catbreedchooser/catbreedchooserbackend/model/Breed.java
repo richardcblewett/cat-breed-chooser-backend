@@ -1,11 +1,12 @@
 package com.catbreedchooser.catbreedchooserbackend.model;
 
 import com.catbreedchooser.catbreedchooserbackend.thecatapi.CatBreedToAdd;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="breed")
+@Table(name = "breed")
 public class Breed {
     @Id
     @Column
@@ -20,103 +21,84 @@ public class Breed {
     private String name;
 
     @Column
-    private String reference_image_id; //used to store an id for the main image rather than the entire url
+    private String imageId; //used to store an id for the main image rather than the entire url
 
     @Column(columnDefinition = "text") //not sure how long a breed description is.
     private String description;
 
     // number fields
     @Column
-    private Integer adaptability;
+    private Long adaptability;
 
     @Column
-    private Integer affection_level;
+    private Long affectionLevel;
 
     @Column
-    private Integer child_friendly;
+    private Long childFriendly;
 
     @Column
-    private Integer dog_friendly;
+    private Long dogFriendly;
 
     @Column
-    private Integer energy_level;
+    private Long energyLevel;
 
     @Column
-    private Integer hypoallergenic;
+    private Long hypoallergenic;
 
     @Column
-    private Integer intelligence;
+    private Long intelligence;
 
     @Column
-    private Integer lap;
+    private Long lap;
 
     @Column
-    private Integer shedding_level;
+    private Long sheddingLevel;
 
     @Column
-    private Integer social_needs;
+    private Long socialNeeds;
 
     @Column
-    private Integer vocalisation;
+    private Long vocalisation;
 
     @Column
-    private Integer grooming;
+    private Long grooming;
 
     public Breed() {
     }
 
-    public Breed(CatBreedToAdd catBreedToAdd){
+    public Breed(CatBreedToAdd catBreedToAdd) {
         this.id = catBreedToAdd.getId();
         this.name = catBreedToAdd.getName();
-        this.reference_image_id = catBreedToAdd.getReference_image_id();
+        this.imageId = catBreedToAdd.getReference_image_id();
         this.adaptability = catBreedToAdd.getAdaptability();
-        this.affection_level = catBreedToAdd.getAffection_level();
-        this.child_friendly = catBreedToAdd.getChild_friendly();
-        this.dog_friendly = catBreedToAdd.getDog_friendly();
-        this.energy_level = catBreedToAdd.getEnergy_level();
+        this.affectionLevel = catBreedToAdd.getAffection_level();
+        this.childFriendly = catBreedToAdd.getChild_friendly();
+        this.dogFriendly = catBreedToAdd.getDog_friendly();
+        this.energyLevel = catBreedToAdd.getEnergy_level();
         this.hypoallergenic = catBreedToAdd.getHypoallergenic();
         this.intelligence = catBreedToAdd.getIntelligence();
         this.lap = catBreedToAdd.getLap();
-        this.shedding_level = catBreedToAdd.getShedding_level();
-        this.social_needs = catBreedToAdd.getSocial_needs();
+        this.sheddingLevel = catBreedToAdd.getShedding_level();
+        this.socialNeeds = catBreedToAdd.getSocial_needs();
         this.vocalisation = catBreedToAdd.getVocalisation();
         this.description = catBreedToAdd.getDescription();
         this.grooming = catBreedToAdd.getGrooming();
-    }
-
-    public Breed(String breed_id, String name, String reference_image_id, Integer adaptability, Integer affection_level, Integer child_friendly, Integer dog_friendly, Integer energy_level, Integer hypoallergenic, Integer intelligence, Integer lap, Integer shedding_level, Integer social_needs, Integer vocalization, String description, Integer grooming) {
-        this.id = breed_id;
-        this.name = name;
-        this.reference_image_id = reference_image_id;
-        this.adaptability = adaptability;
-        this.affection_level = affection_level;
-        this.child_friendly = child_friendly;
-        this.dog_friendly = dog_friendly;
-        this.energy_level = energy_level;
-        this.hypoallergenic = hypoallergenic;
-        this.intelligence = intelligence;
-        this.lap = lap;
-        this.shedding_level = shedding_level;
-        this.social_needs = social_needs;
-        this.vocalisation = vocalization;
-        this.description = description;
-        this.grooming = grooming;
     }
 
     public Long getIdTable() {
         return idTable;
     }
 
-    public void setIdTable(Long id) {
-        this.idTable = id;
+    public void setIdTable(Long idTable) {
+        this.idTable = idTable;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String breed_id) {
-        this.id = breed_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -127,100 +109,12 @@ public class Breed {
         this.name = name;
     }
 
-    public String getReference_image_id() {
-        return reference_image_id;
+    public String getImageId() {
+        return imageId;
     }
 
-    public void setReference_image_id(String reference_image_id) {
-        this.reference_image_id = reference_image_id;
-    }
-
-    public Integer getAdaptability() {
-        return adaptability;
-    }
-
-    public void setAdaptability(Integer adaptability) {
-        this.adaptability = adaptability;
-    }
-
-    public Integer getAffection_level() {
-        return affection_level;
-    }
-
-    public void setAffection_level(Integer affection_level) {
-        this.affection_level = affection_level;
-    }
-
-    public Integer getChild_friendly() {
-        return child_friendly;
-    }
-
-    public void setChild_friendly(Integer child_friendly) {
-        this.child_friendly = child_friendly;
-    }
-
-    public Integer getDog_friendly() {
-        return dog_friendly;
-    }
-
-    public void setDog_friendly(Integer dog_friendly) {
-        this.dog_friendly = dog_friendly;
-    }
-
-    public Integer getEnergy_level() {
-        return energy_level;
-    }
-
-    public void setEnergy_level(Integer energy_level) {
-        this.energy_level = energy_level;
-    }
-
-    public Integer getHypoallergenic() {
-        return hypoallergenic;
-    }
-
-    public void setHypoallergenic(Integer hypoallergenic) {
-        this.hypoallergenic = hypoallergenic;
-    }
-
-    public Integer getIntelligence() {
-        return intelligence;
-    }
-
-    public void setIntelligence(Integer intelligence) {
-        this.intelligence = intelligence;
-    }
-
-    public Integer getLap() {
-        return lap;
-    }
-
-    public void setLap(Integer lap) {
-        this.lap = lap;
-    }
-
-    public Integer getShedding_level() {
-        return shedding_level;
-    }
-
-    public void setShedding_level(Integer shedding_level) {
-        this.shedding_level = shedding_level;
-    }
-
-    public Integer getSocial_needs() {
-        return social_needs;
-    }
-
-    public void setSocial_needs(Integer social_needs) {
-        this.social_needs = social_needs;
-    }
-
-    public Integer getVocalisation() {
-        return vocalisation;
-    }
-
-    public void setVocalisation(Integer vocalization) {
-        this.vocalisation = vocalization;
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
     public String getDescription() {
@@ -231,11 +125,99 @@ public class Breed {
         this.description = description;
     }
 
-    public Integer getGrooming() {
+    public Long getAdaptability() {
+        return adaptability;
+    }
+
+    public void setAdaptability(Long adaptability) {
+        this.adaptability = adaptability;
+    }
+
+    public Long getAffectionLevel() {
+        return affectionLevel;
+    }
+
+    public void setAffectionLevel(Long affectionLevel) {
+        this.affectionLevel = affectionLevel;
+    }
+
+    public Long getChildFriendly() {
+        return childFriendly;
+    }
+
+    public void setChildFriendly(Long childFriendly) {
+        this.childFriendly = childFriendly;
+    }
+
+    public Long getDogFriendly() {
+        return dogFriendly;
+    }
+
+    public void setDogFriendly(Long dogFriendly) {
+        this.dogFriendly = dogFriendly;
+    }
+
+    public Long getEnergyLevel() {
+        return energyLevel;
+    }
+
+    public void setEnergyLevel(Long energyLevel) {
+        this.energyLevel = energyLevel;
+    }
+
+    public Long getHypoallergenic() {
+        return hypoallergenic;
+    }
+
+    public void setHypoallergenic(Long hypoallergenic) {
+        this.hypoallergenic = hypoallergenic;
+    }
+
+    public Long getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(Long intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public Long getLap() {
+        return lap;
+    }
+
+    public void setLap(Long lap) {
+        this.lap = lap;
+    }
+
+    public Long getSheddingLevel() {
+        return sheddingLevel;
+    }
+
+    public void setSheddingLevel(Long sheddingLevel) {
+        this.sheddingLevel = sheddingLevel;
+    }
+
+    public Long getSocialNeeds() {
+        return socialNeeds;
+    }
+
+    public void setSocialNeeds(Long socialNeeds) {
+        this.socialNeeds = socialNeeds;
+    }
+
+    public Long getVocalisation() {
+        return vocalisation;
+    }
+
+    public void setVocalisation(Long vocalisation) {
+        this.vocalisation = vocalisation;
+    }
+
+    public Long getGrooming() {
         return grooming;
     }
 
-    public void setGrooming(Integer grooming) {
+    public void setGrooming(Long grooming) {
         this.grooming = grooming;
     }
 }
