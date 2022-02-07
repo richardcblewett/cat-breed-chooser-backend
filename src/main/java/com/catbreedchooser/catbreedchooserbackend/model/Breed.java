@@ -1,7 +1,6 @@
 package com.catbreedchooser.catbreedchooserbackend.model;
 
 import com.catbreedchooser.catbreedchooserbackend.thecatapi.CatBreedToAdd;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.persistence.*;
 

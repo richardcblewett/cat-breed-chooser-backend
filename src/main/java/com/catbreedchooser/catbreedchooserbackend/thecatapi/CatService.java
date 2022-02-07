@@ -22,10 +22,13 @@ public class CatService {
 
     private static final Logger LOGGER = Logger.getLogger(CatService.class.getName());
     private BreedService breedService;
+    private final RestTemplate restTemplate;
+
+    final String key = "f4fb05db-2de9-4da7-9987-6b58b7d5b6d8";
+    final String url = "https://api.thecatapi.com/v1/breeds";
+
     @Autowired
-    private RestTemplate restTemplate;
-    private String key = "f4fb05db-2de9-4da7-9987-6b58b7d5b6d8";
-    private String url = "https://api.thecatapi.com/v1/breeds";
+    public CatService(RestTemplate restTemplate) {this.restTemplate = restTemplate;}
 
     @Autowired
     public void setBreedService(BreedService breedService) {
@@ -53,8 +56,10 @@ public class CatService {
             CatBreedToAdd catBreedToAdd = objectMapper.convertValue(object, CatBreedToAdd.class);
             String ref = catBreedToAdd.getReference_image_id();
             //in order to be added to the database, there must be a picture
+            //noinspection StatementWithEmptyBody
             if (ref == null) {
-            } else if (breedService.existsByName(catBreedToAdd.getName())) {
+            } else //noinspection StatementWithEmptyBody
+                if (breedService.existsByName(catBreedToAdd.getName())) {
             } else if (!ref.contains("\n")) {
                 try {
                     String s = getHttpResponse(catBreedToAdd.getReference_image_id());
