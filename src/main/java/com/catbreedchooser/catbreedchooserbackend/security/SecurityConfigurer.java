@@ -19,47 +19,14 @@ import org.springframework.web.context.WebApplicationContext;
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-    private MyUserDetailsService myUserDetailsService;
-    @Autowired
-    private JWTRequestFilter jwtRequestFilter;
-
-    @Autowired
-    public void setMyUserDetailsService(MyUserDetailsService myUserDetailsService) {
-        this.myUserDetailsService = myUserDetailsService;
-    }
-
-    @Bean
-    public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // only allowed urls without JWT
         http.authorizeRequests().antMatchers(
-                        "/api/*").permitAll()
+                        "/api/*", "/breeds").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().csrf().disable();
-        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-    }
-
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailsService);
-    }
-
-    @Bean
-    @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public MyUserDetails myUserDetails() {
-        return (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
-                .getPrincipal();
     }
 }
