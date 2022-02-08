@@ -90,8 +90,10 @@ public class BreedService {
         return breedRepository.existsByName(name);
     }
 
-    public List<Breed> searchBreeds(Long childFriendly, Long intelligence, Long grooming) {
+    public List<Breed> searchBreeds(Long childFriendly, Long grooming, Long energyLevel, Long intelligence, Long sheddingLevel, Long socialNeeds, Long vocalisation) {
         LOGGER.info("calling searchBreeds from service");
-        return breedRepository.findByChildFriendlyIsGreaterThanEqualAndIntelligenceIsGreaterThanEqualAndGroomingIsLessThanEqual(childFriendly,intelligence,grooming);
+        System.out.println(childFriendly + grooming +  energyLevel +  intelligence +  sheddingLevel + socialNeeds + vocalisation);
+        return breedRepository.findByChildFriendlyIsGreaterThanEqualAndGroomingIsLessThanEqualAndEnergyLevelIsGreaterThanEqualAndIntelligenceIsGreaterThanEqualAndSheddingLevelIsLessThanEqualAndSocialNeedsIsGreaterThanEqualAndVocalisationIsGreaterThanEqual
+                (childFriendly, grooming, energyLevel, intelligence, sheddingLevel, socialNeeds, vocalisation);
     }
 }

@@ -11,6 +11,7 @@ import java.util.List;
 public interface BreedRepository extends JpaRepository<Breed, Long> {
     boolean existsByName(String name);
     List<Breed> findByNameNotNullAndIdNotNull();
-    List<Breed> findByChildFriendlyIsGreaterThanEqualAndIntelligenceIsGreaterThanEqualAndGroomingIsLessThanEqual(Long childFriendly, Long intelligence, Long grooming);
+    List<Breed> findByChildFriendlyIsGreaterThanEqualAndGroomingIsLessThanEqualAndEnergyLevelIsGreaterThanEqualAndIntelligenceIsGreaterThanEqualAndSheddingLevelIsLessThanEqualAndSocialNeedsIsGreaterThanEqualAndVocalisationIsGreaterThanEqual
+            (Long childFriendly, Long grooming, Long energyLevel, Long intelligence, Long sheddingLevel, Long socialNeeds, Long vocalisation);
     Breed findById(String id);
 }
