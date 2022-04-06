@@ -41,7 +41,7 @@ public class BreedController {
     // http:localhost:9092/api/names
     @GetMapping("/names")
     public List<List<String>> getBreedNames() {
-        LOGGER.info("calling getPictures from controller");
+        LOGGER.info("calling getBreedNames from controller");
         return breedService.getBreedNames();
     }
 
@@ -49,7 +49,7 @@ public class BreedController {
     // http:localhost:9092/api/id
     @GetMapping("/id")
     public Breed getBreedById(String id) {
-        LOGGER.info("calling getPictures from controller");
+        LOGGER.info("calling getBreedById from controller");
         return breedService.getBreedById(id);
     }
 
